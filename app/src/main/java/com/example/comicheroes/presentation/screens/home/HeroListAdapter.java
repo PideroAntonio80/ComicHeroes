@@ -1,5 +1,6 @@
 package com.example.comicheroes.presentation.screens.home;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.comicheroes.R;
 import com.example.comicheroes.databinding.HeroListItemBinding;
 import com.example.comicheroes.domain.model.HeroHome;
@@ -16,7 +18,13 @@ import java.util.List;
 
 public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroListViewHolder> {
 
-    List<HeroHome> heroHomeList;
+    private Context context;
+    private List<HeroHome> heroHomeList;
+
+    public HeroListAdapter(Context context, List<HeroHome> heroHomeList) {
+        this.context = context;
+        this.heroHomeList = heroHomeList;
+    }
 
     @NonNull
     @Override
@@ -28,7 +36,24 @@ public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroLi
 
     @Override
     public void onBindViewHolder(@NonNull HeroListViewHolder holder, int position) {
-        holder.bindConnection(heroHomeList.get(position));
+
+        HeroHome heroHome = heroHomeList.get(position);
+        holder.bindConnection(heroHome);
+
+        Glide.with(context).load(heroHome.image).into(holder.mBinding.HeroListPhoto);
+//        holder.mBinding.heroListName.setText(heroHome.name);
+//        holder.mBinding.heroListIntelligence.setText(heroHome.statistics.getIntelligence());
+//        holder.mBinding.heroListStrength.setText(heroHome.statistics.getStrength());
+//        holder.mBinding.heroListSpeed.setText(heroHome.statistics.getSpeed());
+//        holder.mBinding.heroListDurability.setText(heroHome.statistics.getDurability());
+//        holder.mBinding.heroListPower.setText(heroHome.statistics.getPower());
+//        holder.mBinding.heroListCombat.setText(heroHome.statistics.getCombat());
+//
+//        if (heroHome.isFavourite) {
+//            holder.mBinding.listFavouriteIcon.setVisibility(View.VISIBLE);
+//        } else {
+//            holder.mBinding.listFavouriteIcon.setVisibility(View.GONE);
+//        }
     }
 
     @Override

@@ -5,19 +5,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitApiClientGenerator {
 
-    private Retrofit retrofit;
+    private static Retrofit retrofit;
 
-    private final String BASE_URL = "https://akabab.github.io/superhero-api/api/";
+    private static final String BASE_URL = "https://akabab.github.io/superhero-api/api/";
 
-    public RetrofitApiClientGenerator() {
+    public static Retrofit getRetrofitInstance() {
 
-        retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)   // TODO: Tratar de conseguir esto --> BuildConfig.URL_SERVER en vez de BASE_URL
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-    }
-
-    public Retrofit generateRetrofit() {
-        return this.retrofit;
+        if (retrofit == null) {
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)   // TODO: Tratar de conseguir esto --> BuildConfig.URL_SERVER en vez de BASE_URL
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+        return retrofit;
     }
 }

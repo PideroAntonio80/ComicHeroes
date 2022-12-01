@@ -13,10 +13,9 @@
             android:id="@+id/HeroRecyclerList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/hero_list_item"
-            android:visibility="gone"/>
+            tools:listitem="@layout/hero_list_item"/>
 
-        <TextView
+        <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
@@ -25,7 +24,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:textSize="65sp"
             android:textColor="@color/black_500"
-            android:text="HOME"/>
+            android:text="HOME"/>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
