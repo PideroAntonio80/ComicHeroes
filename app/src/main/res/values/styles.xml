@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="listNameTextStyle" >
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/text_size_xm</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:shadowColor">@color/black_500</item>
+        <item name="android:shadowRadius">5</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+    </style>
+
+    <style name="listStatisticsTextStyle" >
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/text_size_s</item>
+        <item name="android:fontFamily">@font/montserrat_semibolditalic</item>
+        <item name="android:shadowColor">@color/black_500</item>
+        <item name="android:shadowRadius">5</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+    </style>
+
+</resources>

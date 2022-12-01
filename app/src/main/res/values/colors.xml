@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <!-- ~~~~~~~~~~ -->
+    <!-- HEX COLORS -->
+    <!-- ~~~~~~~~~~ -->
+
+    <color name="black_500">#000000</color>
+    <color name="black_400">#444444</color>
+    <color name="black_300">#666666</color>
+
+    <color name="blue">#007aff</color>
+    <color name="light_blue">#add8e6</color>
+
+    <color name="red">#ff4c5b</color>
+    <color name="red_modal">#80d1321c</color>
+
+    <color name="green_asparagus">#83b254</color>
+    <color name="green_teal">#018786</color>
+
+    <color name="grey_dark">#9e9994</color>
+    <color name="grey_separator">#dbd9d7</color>
+
+    <color name="white">#ffffff</color>
+    <color name="white_400">#f7f7f7</color>
+    <color name="white_200">#dfdfdf</color>
+
+    <color name="window_background">#ffffff</color>
+    <color name="list_background">#f9f7fd</color>
+
+    <color name="edittext_hint_default">#CDCDD1</color>
+
+    <color name="selector_hint">#CDCDD1</color>
+
+    <color name="spinner_selector_active">#4D808D11</color>
+
+    <color name="textview_gray">#898A90</color>
+
+    <color name="question_feedback">#082e41</color>
+
+    <!-- MainBottomBar -->
+    <color name="main_bottom_navbar_background">#4c5783</color>
+    <color name="main_bottom_navbar_text">#ffffff</color>
+
+    <!-- Marvel red color -->
+    <color name="marvel_red_background">#ED1D24</color>
+
+</resources>

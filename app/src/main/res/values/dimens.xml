@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ~~~~~~~~~~~~~~~~~~ -->
+    <!-- MARGINS & PADDING -->
+    <!-- ~~~~~~~~~~~~~~~~~~ -->
+
+    <dimen name="margin_padding_size_zero">0dp</dimen>
+    <dimen name="margin_padding_size_very_very_small">1dp</dimen>
+    <dimen name="margin_padding_size_very_small">2dp</dimen>
+    <dimen name="margin_padding_size_very_xsmall">4dp</dimen>
+    <dimen name="margin_padding_size_very_xxsmall">5dp</dimen>
+    <dimen name="margin_padding_size_small">6dp</dimen>
+    <dimen name="margin_padding_size_xsmall">8dp</dimen>
+    <dimen name="margin_padding_size_xxsmall">10dp</dimen>
+    <dimen name="margin_padding_size_xxxsmall">12dp</dimen>
+    <dimen name="margin_padding_size_xxxxsmall">14dp</dimen>
+    <dimen name="margin_padding_size_medium">16dp</dimen>
+    <dimen name="margin_padding_size_xmedium">18dp</dimen>
+    <dimen name="margin_padding_size_xxmedium">20dp</dimen>
+    <dimen name="margin_padding_size_large">24dp</dimen>
+    <dimen name="margin_padding_size_xlarge">28dp</dimen>
+    <dimen name="margin_padding_size_xxlarge">32dp</dimen>
+    <dimen name="margin_padding_size_xxxlarge">40dp</dimen>
+    <dimen name="margin_padding_size_xxxxlarge">44dp</dimen>
+    <dimen name="margin_padding_size_xxxxxlarge">46dp</dimen>
+    <dimen name="margin_padding_size_xxxxxxlarge">48dp</dimen>
+    <dimen name="margin_padding_size_big">50dp</dimen>
+    <dimen name="margin_padding_size_xbig">52dp</dimen>
+    <dimen name="margin_padding_size_maxi">56dp</dimen>
+    <dimen name="margin_padding_size_xmaxi">64dp</dimen>
+    <dimen name="margin_padding_size_xxmaxi">80dp</dimen>
+    <dimen name="margin_padding_size_xxxmaxi">94dp</dimen>
+
+    <dimen name="margin_padding_size_card_list_horizontal">30dp</dimen>
+    <dimen name="margin_padding_size_card_item_horizontal">10dp</dimen>
+
+    <dimen name="no_padding">0dp</dimen>
+    <dimen name="padding_xmicro">2dp</dimen>
+    <dimen name="padding_micro">4dp</dimen>
+    <dimen name="padding_xxxs">6dp</dimen>
+    <dimen name="padding_xxs">8dp</dimen>
+    <dimen name="padding_xs">10dp</dimen>
+    <dimen name="padding_s">12dp</dimen>
+    <dimen name="padding_m">14dp</dimen>
+    <dimen name="padding_xm">16dp</dimen>
+    <dimen name="padding_xxm">18dp</dimen>
+    <dimen name="padding_xxxm">20dp</dimen>
+    <dimen name="padding_xxxxm">22dp</dimen>
+    <dimen name="padding_l">24dp</dimen>
+    <dimen name="padding_xl">28dp</dimen>
+    <dimen name="padding_xxl">30dp</dimen>
+    <dimen name="padding_xxxl">40dp</dimen>
+    <dimen name="padding_xxxxl">44dp</dimen>
+    <dimen name="padding_big">50dp</dimen>
+    <dimen name="padding_xbig">60dp</dimen>
+    <dimen name="padding_maxi">72dp</dimen>
+
+    <!-- ~~~~~~~~~~ -->
+    <!-- FONT SIZES -->
+    <!-- ~~~~~~~~~~ -->
+
+    <dimen name="text_size_xxs">10sp</dimen>
+    <dimen name="text_size_xs">12sp</dimen>
+    <dimen name="text_size_s">14sp</dimen>
+    <dimen name="text_size_m">16sp</dimen>
+    <dimen name="text_size_xm">18sp</dimen>
+    <dimen name="text_size_l">20sp</dimen>
+    <dimen name="text_size_xl">22sp</dimen>
+    <dimen name="text_size_xxl">24sp</dimen>
+    <dimen name="text_size_xxxl">28sp</dimen>
+    <dimen name="text_size_xxxxl">32sp</dimen>
+    <dimen name="text_size_xxxxxl">34sp</dimen>
+    <dimen name="text_size_maxi">36sp</dimen>
+
+    <!-- ~~~~~~~~~~ -->
+    <!-- CARD VIEW -->
+    <!-- ~~~~~~~~~~ -->
+
+    <dimen name="card_view_height">200dp</dimen>
+    <dimen name="image_card_view_width">150dp</dimen>
+
+</resources>
