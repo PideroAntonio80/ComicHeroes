@@ -2,16 +2,16 @@ package com.example.comicheroes.domain.model;
 
 public class Statistics {
 
-    private int intelligence;
-    private int strength;
-    private int speed;
-    private int durability;
-    private int power;
-    private int combat;
+    private String intelligence;
+    private String strength;
+    private String speed;
+    private String durability;
+    private String power;
+    private String combat;
 
     /** CONSTRUCTOR */
 
-    public Statistics(int intelligence, int strength, int speed, int durability, int power, int combat) {
+    public Statistics(String intelligence, String strength, String speed, String durability, String power, String combat) {
         this.intelligence = intelligence;
         this.strength = strength;
         this.speed = speed;
@@ -22,51 +22,51 @@ public class Statistics {
 
     /** GETTERS & SETTERS */
 
-    public int getIntelligence() {
+    public String getIntelligence() {
         return intelligence;
     }
 
-    public void setIntelligence(int intelligence) {
+    public void setIntelligence(String intelligence) {
         this.intelligence = intelligence;
     }
 
-    public int getStrength() {
+    public String getStrength() {
         return strength;
     }
 
-    public void setStrength(int strength) {
+    public void setStrength(String strength) {
         this.strength = strength;
     }
 
-    public int getSpeed() {
+    public String getSpeed() {
         return speed;
     }
 
-    public void setSpeed(int speed) {
+    public void setSpeed(String speed) {
         this.speed = speed;
     }
 
-    public int getDurability() {
+    public String getDurability() {
         return durability;
     }
 
-    public void setDurability(int durability) {
+    public void setDurability(String durability) {
         this.durability = durability;
     }
 
-    public int getPower() {
+    public String getPower() {
         return power;
     }
 
-    public void setPower(int power) {
+    public void setPower(String power) {
         this.power = power;
     }
 
-    public int getCombat() {
+    public String getCombat() {
         return combat;
     }
 
-    public void setCombat(int combat) {
+    public void setCombat(String combat) {
         this.combat = combat;
     }
 }

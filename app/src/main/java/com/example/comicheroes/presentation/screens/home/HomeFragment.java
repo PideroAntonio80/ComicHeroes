@@ -7,22 +7,19 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.comicheroes.R;
 import com.example.comicheroes.databinding.HomeFragmentBinding;
 import com.example.comicheroes.domain.model.HeroHome;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    HomeFragmentBinding binding;
+    private HomeFragmentBinding binding;
 
     private HomeViewModel viewModel;
 
@@ -37,7 +34,7 @@ public class HomeFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false);
+        binding = HomeFragmentBinding.inflate(inflater, container, false);
 
         return binding.getRoot();
     }
@@ -59,7 +56,6 @@ public class HomeFragment extends Fragment {
 
         adapter = new HeroListAdapter(this.getContext(), list);
         binding.HeroRecyclerList.setAdapter(adapter);
-
     }
 
     private void observeViewModel() {

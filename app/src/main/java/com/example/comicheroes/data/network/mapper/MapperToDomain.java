@@ -103,11 +103,11 @@ public class MapperToDomain {
     public Statistics getStatisticsFromPowerStatsResponse(PowerstatsResponse powerstatsResponse) {
 
         return new Statistics(
-                powerstatsResponse.getIntelligence(),
-                powerstatsResponse.getStrength(),
-                powerstatsResponse.getSpeed(),
-                powerstatsResponse.getDurability(),
-                powerstatsResponse.getPower(),
-                powerstatsResponse.getCombat());
+                String.valueOf(powerstatsResponse.getIntelligence()),
+                String.valueOf(powerstatsResponse.getStrength()),
+                String.valueOf(powerstatsResponse.getSpeed()),
+                String.valueOf(powerstatsResponse.getDurability()),
+                String.valueOf(powerstatsResponse.getPower()),
+                String.valueOf(powerstatsResponse.getCombat()));
     }
 }

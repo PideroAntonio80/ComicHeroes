@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -29,50 +28,59 @@ public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroLi
     @NonNull
     @Override
     public HeroListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        HeroListItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.hero_list_item, parent, false);
 
-        return new HeroListViewHolder(binding);
+        return new HeroListViewHolder(HeroListItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull HeroListViewHolder holder, int position) {
 
         HeroHome heroHome = heroHomeList.get(position);
-        holder.bindConnection(heroHome);
 
-        Glide.with(context).load(heroHome.image).into(holder.mBinding.HeroListPhoto);
-//        holder.mBinding.heroListName.setText(heroHome.name);
-//        holder.mBinding.heroListIntelligence.setText(heroHome.statistics.getIntelligence());
-//        holder.mBinding.heroListStrength.setText(heroHome.statistics.getStrength());
-//        holder.mBinding.heroListSpeed.setText(heroHome.statistics.getSpeed());
-//        holder.mBinding.heroListDurability.setText(heroHome.statistics.getDurability());
-//        holder.mBinding.heroListPower.setText(heroHome.statistics.getPower());
-//        holder.mBinding.heroListCombat.setText(heroHome.statistics.getCombat());
-//
-//        if (heroHome.isFavourite) {
-//            holder.mBinding.listFavouriteIcon.setVisibility(View.VISIBLE);
-//        } else {
-//            holder.mBinding.listFavouriteIcon.setVisibility(View.GONE);
-//        }
+        Glide.with(context).load(heroHome.image).into(holder.binding.HeroListPhoto);
+
+        holder.binding.heroListName.setText(heroHome.getName());
+        holder.binding.heroListIntelligence.setText(context.getString(R.string.hero_list_intelligence, heroHome.statistics.getIntelligence()));
+        holder.binding.heroListStrength.setText(context.getString(R.string.hero_list_strength, heroHome.statistics.getStrength()));
+        holder.binding.heroListSpeed.setText(context.getString(R.string.hero_list_speed, heroHome.statistics.getSpeed()));
+        holder.binding.heroListDurability.setText(context.getString(R.string.hero_list_durability, heroHome.statistics.getDurability()));
+        holder.binding.heroListPower.setText(context.getString(R.string.hero_list_power, heroHome.statistics.getPower()));
+        holder.binding.heroListCombat.setText(context.getString(R.string.hero_list_combat, heroHome.statistics.getCombat()));
+
+        if (heroHome.isFavourite) {
+            holder.binding.listFavouriteIcon.setVisibility(View.GONE);
+            holder.binding.listFavouriteIconFilled.setVisibility(View.VISIBLE);
+        } else {
+            holder.binding.listFavouriteIcon.setVisibility(View.VISIBLE);
+            holder.binding.listFavouriteIconFilled.setVisibility(View.GONE);
+        }
+
+        holder.binding.listFavouriteIcon.setOnClickListener(v -> {
+
+                holder.binding.listFavouriteIcon.setVisibility(View.GONE);
+                holder.binding.listFavouriteIconFilled.setVisibility(View.VISIBLE);
+        });
+
+        holder.binding.listFavouriteIconFilled.setOnClickListener(v -> {
+
+                holder.binding.listFavouriteIcon.setVisibility(View.VISIBLE);
+                holder.binding.listFavouriteIconFilled.setVisibility(View.GONE);
+        });
     }
 
     @Override
     public int getItemCount() {
-        return heroHomeList.size();
+        return heroHomeList == null ? 0 : heroHomeList.size();
     }
 
     public static class HeroListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private final HeroListItemBinding mBinding;
+        private HeroListItemBinding binding;
 
         public HeroListViewHolder(HeroListItemBinding binding) {
             super(binding.getRoot());
-            mBinding = binding;
+            this.binding = binding;
             itemView.setOnClickListener(this);
-        }
-
-        public void bindConnection (HeroHome heroHome) {
-            mBinding.setHero(heroHome);
         }
 
         @Override

@@ -9,13 +9,6 @@
         android:title="@string/home" />
 
     <item
-        android:id="@+id/alphaFragment"
-        android:icon="@drawable/ic_sort_by_alpha"
-        android:enabled="true"
-        android:menuCategory="secondary"
-        android:title="@string/alpha" />
-
-    <item
         android:id="@+id/searchFragment"
         android:icon="@drawable/ic_search"
         android:enabled="true"

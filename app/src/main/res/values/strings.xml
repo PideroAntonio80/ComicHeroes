@@ -16,10 +16,10 @@
     <!-- HERO LIST ITEM -->
     <string name="hero_list_image">hero list image</string>
     <string name="favourite_icon_list">favourite hero from list</string>
-    <string name="hero_list_intelligence">Intelligence: %1$d</string>
-    <string name="hero_list_strength">Strength: %1$d</string>
-    <string name="hero_list_speed">Speed: %1$d</string>
-    <string name="hero_list_durability">Durability: %1$d</string>
-    <string name="hero_list_power">Power: %1$d</string>
-    <string name="hero_list_combat">Combat: %1$d</string>
+    <string name="hero_list_intelligence">Intelligence: %1$s</string>
+    <string name="hero_list_strength">Strength: %1$s</string>
+    <string name="hero_list_speed">Speed: %1$s</string>
+    <string name="hero_list_durability">Durability: %1$s</string>
+    <string name="hero_list_power">Power: %1$s</string>
+    <string name="hero_list_combat">Combat: %1$s</string>
 </resources>

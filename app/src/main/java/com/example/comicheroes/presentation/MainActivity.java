@@ -3,30 +3,25 @@ package com.example.comicheroes.presentation;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.comicheroes.R;
 import com.example.comicheroes.databinding.ActivityMainBinding;
-import com.example.comicheroes.presentation.screens.alpha.AlphaFragment;
 import com.example.comicheroes.presentation.screens.home.HomeFragment;
 import com.example.comicheroes.presentation.screens.search.SearchFragment;
-import com.google.android.material.appbar.MaterialToolbar;
 
 public class MainActivity extends AppCompatActivity {
 
-    ActivityMainBinding binding;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         initOptionBars();
         manageFragmentsTitle();
@@ -48,10 +43,6 @@ public class MainActivity extends AppCompatActivity {
                     binding.mainActivityToolbar.setTitle(R.string.toolbar_home_title);
                     item.getActionView();
                     break;
-                case R.id.alphaFragment:
-                    showFragment(AlphaFragment.newInstance());
-                    binding.mainActivityToolbar.setTitle(R.string.toolbar_alpha_title);
-                    break;
                 case R.id.searchFragment:
                     showFragment(SearchFragment.newInstance());
                     binding.mainActivityToolbar.setTitle(R.string.toolbar_search_title);
@@ -67,9 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
         if(currentFragment instanceof HomeFragment) {
             binding.mainActivityToolbar.setTitle(R.string.toolbar_home_title);
-        }
-        else if(currentFragment instanceof AlphaFragment) {
-            binding.mainActivityToolbar.setTitle(R.string.toolbar_alpha_title);
         }
         else if(currentFragment instanceof SearchFragment) {
             binding.mainActivityToolbar.setTitle(R.string.toolbar_search_title);
