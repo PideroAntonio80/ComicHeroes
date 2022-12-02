@@ -79,5 +79,6 @@
 
     <dimen name="card_view_height">200dp</dimen>
     <dimen name="image_card_view_width">150dp</dimen>
+    <dimen name="image_detail_hero_height">300dp</dimen>
 
 </resources>

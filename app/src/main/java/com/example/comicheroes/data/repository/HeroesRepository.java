@@ -7,6 +7,7 @@ import com.example.comicheroes.data.network.mapper.MapperToDomain;
 import com.example.comicheroes.data.network.model.HeroResponse;
 import com.example.comicheroes.data.network.webService.ApiServices;
 import com.example.comicheroes.data.network.webService.RetrofitApiClientGenerator;
+import com.example.comicheroes.domain.model.HeroDetail;
 import com.example.comicheroes.domain.model.HeroHome;
 
 import java.util.List;
@@ -40,6 +41,26 @@ public class HeroesRepository {
 
             @Override
             public void onFailure(Call<List<HeroResponse>> call, Throwable t) {
+                data.setValue(null);
+            }
+        });
+        return data;
+    }
+
+    public LiveData<HeroDetail> getHeroDetail(String idHero) {
+
+        final MutableLiveData<HeroDetail> data = new MutableLiveData<>();
+        api.getHeroById(idHero).enqueue(new Callback<HeroResponse>() {
+
+            @Override
+            public void onResponse(Call<HeroResponse> call, Response<HeroResponse> response) {
+                if (response.body() != null) {
+                    data.setValue(mapperToDomain.getHeroDetailFromHeroResponse(response.body()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<HeroResponse> call, Throwable t) {
                 data.setValue(null);
             }
         });

@@ -20,9 +20,12 @@ public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroLi
     private Context context;
     private List<HeroHome> heroHomeList;
 
-    public HeroListAdapter(Context context, List<HeroHome> heroHomeList) {
+    final HeroListAdapter.OnItemClickListener listener;
+
+    public HeroListAdapter(Context context, List<HeroHome> heroHomeList, HeroListAdapter.OnItemClickListener listener) {
         this.context = context;
         this.heroHomeList = heroHomeList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -35,25 +38,8 @@ public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroLi
     @Override
     public void onBindViewHolder(@NonNull HeroListViewHolder holder, int position) {
 
-        HeroHome heroHome = heroHomeList.get(position);
-
-        Glide.with(context).load(heroHome.image).into(holder.binding.HeroListPhoto);
-
-        holder.binding.heroListName.setText(heroHome.getName());
-        holder.binding.heroListIntelligence.setText(context.getString(R.string.hero_list_intelligence, heroHome.statistics.getIntelligence()));
-        holder.binding.heroListStrength.setText(context.getString(R.string.hero_list_strength, heroHome.statistics.getStrength()));
-        holder.binding.heroListSpeed.setText(context.getString(R.string.hero_list_speed, heroHome.statistics.getSpeed()));
-        holder.binding.heroListDurability.setText(context.getString(R.string.hero_list_durability, heroHome.statistics.getDurability()));
-        holder.binding.heroListPower.setText(context.getString(R.string.hero_list_power, heroHome.statistics.getPower()));
-        holder.binding.heroListCombat.setText(context.getString(R.string.hero_list_combat, heroHome.statistics.getCombat()));
-
-        if (heroHome.isFavourite) {
-            holder.binding.listFavouriteIcon.setVisibility(View.GONE);
-            holder.binding.listFavouriteIconFilled.setVisibility(View.VISIBLE);
-        } else {
-            holder.binding.listFavouriteIcon.setVisibility(View.VISIBLE);
-            holder.binding.listFavouriteIconFilled.setVisibility(View.GONE);
-        }
+        HeroHome myHero = heroHomeList.get(position);
+        holder.bindData(myHero);
 
         holder.binding.listFavouriteIcon.setOnClickListener(v -> {
 
@@ -73,19 +59,44 @@ public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroLi
         return heroHomeList == null ? 0 : heroHomeList.size();
     }
 
-    public static class HeroListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class HeroListViewHolder extends RecyclerView.ViewHolder {
 
         private HeroListItemBinding binding;
 
         public HeroListViewHolder(HeroListItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
-            itemView.setOnClickListener(this);
         }
 
-        @Override
-        public void onClick(View view) {
+        public void bindData(HeroHome heroHome) {
+            Glide.with(context).load(heroHome.getImage()).into(binding.HeroListPhoto);
 
+            binding.heroListName.setText(heroHome.getName());
+            binding.heroListIntelligence.setText(context.getString(R.string.hero_list_intelligence, heroHome.getStatistics().getIntelligence()));
+            binding.heroListStrength.setText(context.getString(R.string.hero_list_strength, heroHome.getStatistics().getStrength()));
+            binding.heroListSpeed.setText(context.getString(R.string.hero_list_speed, heroHome.getStatistics().getSpeed()));
+            binding.heroListDurability.setText(context.getString(R.string.hero_list_durability, heroHome.getStatistics().getDurability()));
+            binding.heroListPower.setText(context.getString(R.string.hero_list_power, heroHome.getStatistics().getPower()));
+            binding.heroListCombat.setText(context.getString(R.string.hero_list_combat, heroHome.getStatistics().getCombat()));
+
+            if (heroHome.getFavourite()) {
+                binding.listFavouriteIcon.setVisibility(View.GONE);
+                binding.listFavouriteIconFilled.setVisibility(View.VISIBLE);
+            } else {
+                binding.listFavouriteIcon.setVisibility(View.VISIBLE);
+                binding.listFavouriteIconFilled.setVisibility(View.GONE);
+            }
+
+            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onItemClick(heroHome);
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(HeroHome item);
     }
 }

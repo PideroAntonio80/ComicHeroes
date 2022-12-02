@@ -12,8 +12,11 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.comicheroes.R;
 import com.example.comicheroes.databinding.HomeFragmentBinding;
 import com.example.comicheroes.domain.model.HeroHome;
+import com.example.comicheroes.presentation.MainActivity;
+import com.example.comicheroes.presentation.screens.detail.DetailFragment;
 
 import java.util.List;
 
@@ -22,8 +25,6 @@ public class HomeFragment extends Fragment {
     private HomeFragmentBinding binding;
 
     private HomeViewModel viewModel;
-
-    private HeroListAdapter adapter;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -43,6 +44,8 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ((MainActivity) requireActivity()).showBottomBar();
+
         viewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
 
         observeViewModel();
@@ -54,7 +57,13 @@ public class HomeFragment extends Fragment {
 
         binding.HeroRecyclerList.setHasFixedSize(true);
 
-        adapter = new HeroListAdapter(this.getContext(), list);
+        HeroListAdapter adapter = new HeroListAdapter(this.getContext(), list, item -> requireActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .setReorderingAllowed(true)
+                .replace(R.id.fragmentContainer, DetailFragment.newInstance(item.getId()))
+                .addToBackStack(null)
+                .commit());
         binding.HeroRecyclerList.setAdapter(adapter);
     }
 

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.comicheroes.databinding.SearchFragmentBinding;
+import com.example.comicheroes.presentation.MainActivity;
 
 public class SearchFragment extends Fragment {
 
@@ -35,6 +36,8 @@ public class SearchFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        ((MainActivity) requireActivity()).showBottomBar();
 
         viewModel = new ViewModelProvider(requireActivity()).get(SearchViewModel.class);
     }

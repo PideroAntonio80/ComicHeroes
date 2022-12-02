@@ -2,14 +2,16 @@ package com.example.comicheroes.domain.model;
 
 public class HeroHome {
 
-    public String image;
-    public String name;
-    public Statistics statistics;
-    public Boolean isFavourite;
+    private String id;
+    private String image;
+    private String name;
+    private Statistics statistics;
+    private Boolean isFavourite;
 
     /** CONSTRUCTOR */
 
-    public HeroHome(String image, String name, Statistics statistics, Boolean isFavourite) {
+    public HeroHome(String id, String image, String name, Statistics statistics, Boolean isFavourite) {
+        this.id = id;
         this.image = image;
         this.name = name;
         this.statistics = statistics;
@@ -17,6 +19,14 @@ public class HeroHome {
     }
 
     /** GETTERS & SETTERS */
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getImage() {
         return image;

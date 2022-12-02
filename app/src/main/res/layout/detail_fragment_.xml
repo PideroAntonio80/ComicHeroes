@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,15 +8,328 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/marvel_red_background">
+
+            <!--HERO IMAGE-->
+
+            <ImageView
+                android:id="@+id/heroDetailPhoto"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/image_detail_hero_height"
+                android:contentDescription="@string/hero_detail_image"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--FAVOURITE ICON-->
+
+            <ImageView
+                android:id="@+id/detailFavouriteIconFilled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_size_very_small"
+                android:contentDescription="@string/favourite_icon_list"
+                app:layout_constraintTop_toBottomOf="@+id/heroDetailName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/ic_star"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+
+            <!--HERO NAME-->
+
+            <TextView
+                android:id="@+id/heroDetailName"
+                style="@style/detailNameTextStyle"
+                android:layout_marginTop="@dimen/margin_padding_size_xsmall"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/heroDetailPhoto"
+                tools:text="Hero name" />
+
+            <!--HERO INTELLIGENCE-->
+
+            <TextView
+                android:id="@+id/heroDetailIntelligence"
+                style="@style/listStatisticsTextStyle"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin_padding_size_xmedium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailName"
+                tools:text="Intelligence: 45" />
+
+            <!--HERO STRENGTH-->
+
+            <TextView
+                android:id="@+id/heroDetailStrength"
+                style="@style/listStatisticsTextStyle"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin_padding_size_very_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailIntelligence"
+                tools:text="Strength: 95" />
+
+            <!--HERO SPEED-->
+
+            <TextView
+                android:id="@+id/heroDetailSpeed"
+                style="@style/listStatisticsTextStyle"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin_padding_size_very_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailStrength"
+                tools:text="Speed: 56" />
+
+            <!--HERO DURABILITY-->
+
+            <TextView
+                android:id="@+id/heroDetailDurability"
+                style="@style/listStatisticsTextStyle"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin_padding_size_very_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailSpeed"
+                tools:text="Durability: 83" />
+
+            <!--HERO POWER-->
+
+            <TextView
+                android:id="@+id/heroDetailPower"
+                style="@style/listStatisticsTextStyle"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin_padding_size_very_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailDurability"
+                tools:text="Power: 67" />
+
+            <!--HERO COMBAT-->
+
+            <TextView
+                android:id="@+id/heroDetailCombat"
+                style="@style/listStatisticsTextStyle"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin_padding_size_very_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailPower"
+                tools:text="Combat: 35" />
+
+            <!--SEPARATOR-->
+
+            <View
+                android:id="@+id/firstSeparator"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginVertical="@dimen/padding_xxxm"
+                android:background="@color/grey_separator"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailCombat" />
+
+            <!--APPEARANCE TITLE-->
+
+            <TextView
+                android:id="@+id/heroDetailAppearanceTitle"
+                style="@style/listNameTextStyle"
+                android:layout_marginTop="@dimen/margin_padding_size_xsmall"
+                android:text="@string/hero_detail_appearance_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/firstSeparator" />
+
+            <!--HERO GENDER-->
+
+            <TextView
+                android:id="@+id/heroDetailGender"
+                style="@style/listStatisticsTextStyle"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin_padding_size_xmedium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailAppearanceTitle"
+                tools:text="Gender: male" />
+
+            <!--HERO RACE-->
+
+            <TextView
+                android:id="@+id/heroDetailRace"
+                style="@style/listStatisticsTextStyle"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin_padding_size_very_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailGender"
+                tools:text="Race: Icthyo Sapien" />
+
+            <!--HERO HEIGHT-->
+
+            <TextView
+                android:id="@+id/heroDetailHeight"
+                style="@style/listStatisticsTextStyle"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin_padding_size_very_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailRace"
+                tools:text="Height: 6.3" />
+
+            <!--HERO WEIGHT-->
+
+            <TextView
+                android:id="@+id/heroDetailWeight"
+                style="@style/listStatisticsTextStyle"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin_padding_size_very_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailHeight"
+                tools:text="Weight: 145 lb" />
+
+            <!--HERO EYES COLOR-->
+
+            <TextView
+                android:id="@+id/heroDetailEyeColor"
+                style="@style/listStatisticsTextStyle"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin_padding_size_very_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailWeight"
+                tools:text="Eyes color: blue" />
+
+            <!--HERO HAIR COLOR-->
+
+            <TextView
+                android:id="@+id/heroDetailHairColor"
+                style="@style/listStatisticsTextStyle"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin_padding_size_very_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailEyeColor"
+                tools:text="Hair color: No hair" />
+
+            <!--SEPARATOR-->
+
+            <View
+                android:id="@+id/secondSeparator"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginVertical="@dimen/padding_xxxm"
+                android:background="@color/grey_separator"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailHairColor" />
+
+            <!--BIOGRAPHY TITLE-->
+
+            <TextView
+                android:id="@+id/heroDetailBiographyTitle"
+                style="@style/listNameTextStyle"
+                android:layout_marginTop="@dimen/margin_padding_size_xsmall"
+                android:text="@string/hero_detail_biography_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/secondSeparator" />
+
+            <!--HERO FULL NAME-->
+
+            <TextView
+                android:id="@+id/heroDetailFullName"
+                style="@style/listStatisticsTextStyle"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin_padding_size_xmedium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailBiographyTitle"
+                tools:text="Full name: Abraham Sapien" />
+
+            <!--HERO ALTER EGOS-->
+
+            <TextView
+                android:id="@+id/heroDetailAlterEgos"
+                style="@style/listStatisticsTextStyle"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin_padding_size_very_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailFullName"
+                tools:text="Alter ego: No alter egos found" />
+
+            <!--HERO ALIAS-->
+
+            <TextView
+                android:id="@+id/heroDetailAliases"
+                style="@style/listStatisticsTextStyle"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin_padding_size_very_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailAlterEgos"
+                tools:text="Alias: Langdon Everett Caul" />
+
+            <!--HERO BIRTH PLACE-->
+
+            <TextView
+                android:id="@+id/heroDetailBirthPlace"
+                style="@style/listStatisticsTextStyle"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin_padding_size_very_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailAliases"
+                tools:text="Place of birth: 2 - march - 1942" />
+
+            <!--HERO FIRST APPEARANCE-->
+
+            <TextView
+                android:id="@+id/heroDetailFirstAppearance"
+                style="@style/listStatisticsTextStyle"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin_padding_size_very_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailBirthPlace"
+                tools:text="FirstAppearance: Hellboy: Seed of Destruction (1993)" />
+
+            <!--HERO PUBLISHER-->
+
+            <TextView
+                android:id="@+id/heroDetailPublisher"
+                style="@style/listStatisticsTextStyle"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin_padding_size_very_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailFirstAppearance"
+                tools:text="Publisher: Dark Horse Comics" />
+
+            <!--HERO ALIGNMENT-->
+
+            <TextView
+                android:id="@+id/heroDetailAlignment"
+                style="@style/listStatisticsTextStyle"
+                android:layout_marginHorizontal="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin_padding_size_very_small"
+                android:layout_marginBottom="@dimen/margin_padding_size_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heroDetailPublisher"
+                tools:text="Alignment: Good" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!--FLOATING ACTION BUTTON-->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DETAIL"
-        android:textColor="@color/black_500"
-        android:textSize="65sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="end|bottom"
+        android:backgroundTint="@color/medium_blue"
+        android:src="@drawable/ic_big_filled_star"
+        app:tint="@color/favourite_golden_star"
+        android:contentDescription="@string/favourite_icon_list"
+        android:layout_margin="@dimen/margin_padding_size_medium" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+

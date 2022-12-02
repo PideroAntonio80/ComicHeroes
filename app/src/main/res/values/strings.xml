@@ -2,18 +2,19 @@
     <string name="app_name">ComicHeroes</string>
 
     <!-- TOOLBAR -->
+
     <string name="toolbar_title">Screen title</string>
     <string name="toolbar_home_title">Home</string>
-    <string name="toolbar_alpha_title">Alphabetic order</string>
     <string name="toolbar_search_title">Search</string>
     <string name="toolbar_detail_title">Detail</string>
 
     <!-- BOTTOM NAVIGATION BAR -->
+
     <string name="home">Home</string>
-    <string name="alpha">Alphabetic order</string>
     <string name="search">Search</string>
 
     <!-- HERO LIST ITEM -->
+
     <string name="hero_list_image">hero list image</string>
     <string name="favourite_icon_list">favourite hero from list</string>
     <string name="hero_list_intelligence">Intelligence: %1$s</string>
@@ -22,4 +23,27 @@
     <string name="hero_list_durability">Durability: %1$s</string>
     <string name="hero_list_power">Power: %1$s</string>
     <string name="hero_list_combat">Combat: %1$s</string>
+
+    <!-- HERO DETAIL -->
+
+    <string name="hero_detail_image">hero list image</string>
+    <string name="favourite_floating_button_detail">favourite hero from detail</string>
+    <string name="hero_detail_appearance_title">APPEARANCE</string>
+    <string name="hero_detail_biography_title">BIOGRAPHY</string>
+
+    <string name="hero_detail_gender">Gender: %1$s</string>
+    <string name="hero_detail_race">Race: %1$s</string>
+    <string name="hero_detail_height">Height: %1$s</string>
+    <string name="hero_detail_weight">Weight: %1$s</string>
+    <string name="hero_detail_eyes_color">Eyes color: %1$s</string>
+    <string name="hero_detail_hair_color">Hair color: %1$s</string>
+
+    <string name="hero_detail_full_name">Full name: %1$s</string>
+    <string name="hero_detail_alter_egos">Alter ego: %1$s</string>
+    <string name="hero_detail_alias">Alias: %1$s</string>
+    <string name="hero_detail_birth_place">Birth place: %1$s</string>
+    <string name="hero_detail_first_appearance">First appearance: %1$s</string>
+    <string name="hero_detail_publisher">Publisher: %1$s</string>
+    <string name="hero_detail_alignment">Alignment: %1$s</string>
+
 </resources>

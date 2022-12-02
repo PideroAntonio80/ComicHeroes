@@ -13,6 +13,6 @@ public interface ApiServices {
     @GET("all.json")
     Call<List<HeroResponse>> getHeroList();
 
-    @GET("id/{idNumber}.json")
-    Call<HeroResponse> getHeroById(@Path("idNumber") int id);
+    @GET("id/{idHero}.json")
+    Call<HeroResponse> getHeroById(@Path("idHero") String id);
 }

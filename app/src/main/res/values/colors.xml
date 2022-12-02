@@ -50,5 +50,6 @@
 
     <!-- Marvel red color -->
     <color name="marvel_red_background">#ED1D24</color>
+    <color name="favourite_golden_star">#ffff72</color>
 
 </resources>

@@ -1,5 +1,7 @@
 package com.example.comicheroes.data.network.mapper;
 
+import com.example.comicheroes.data.network.model.AppearanceResponse;
+import com.example.comicheroes.data.network.model.BiographyResponse;
 import com.example.comicheroes.data.network.model.HeroResponse;
 import com.example.comicheroes.data.network.model.PowerstatsResponse;
 import com.example.comicheroes.domain.model.Appearance;
@@ -13,82 +15,12 @@ import java.util.List;
 
 public class MapperToDomain {
 
-    private HeroResponse heroResponse;
-    private HeroHome heroHome;
-    private PowerstatsResponse powerstatsResponse;
-    private Statistics statistics;
-    private HeroDetail heroDetail;
-    private Appearance appearance;
-    private Biography biography;
-
-    /** EMPTY CONSTRUCTOR */
-
-    public MapperToDomain() {
-    }
-
-    /** GETTERS & SETTERS */
-
-    public HeroResponse getHeroResponse() {
-        return heroResponse;
-    }
-
-    public void setHeroResponse(HeroResponse heroResponse) {
-        this.heroResponse = heroResponse;
-    }
-
-    public HeroHome getHeroHome() {
-        return heroHome;
-    }
-
-    public void setHeroHome(HeroHome heroHome) {
-        this.heroHome = heroHome;
-    }
-
-    public PowerstatsResponse getPowerstatsResponse() {
-        return powerstatsResponse;
-    }
-
-    public void setPowerstatsResponse(PowerstatsResponse powerstatsResponse) {
-        this.powerstatsResponse = powerstatsResponse;
-    }
-
-    public Statistics getStatistics() {
-        return statistics;
-    }
-
-    public void setStatistics(Statistics statistics) {
-        this.statistics = statistics;
-    }
-
-    public HeroDetail getHeroDetail() {
-        return heroDetail;
-    }
-
-    public void setHeroDetail(HeroDetail heroDetail) {
-        this.heroDetail = heroDetail;
-    }
-
-    public Appearance getAppearance() {
-        return appearance;
-    }
-
-    public void setAppearance(Appearance appearance) {
-        this.appearance = appearance;
-    }
-
-    public Biography getBiography() {
-        return biography;
-    }
-
-    public void setBiography(Biography biography) {
-        this.biography = biography;
-    }
-
     public List<HeroHome> getHeroHomeListFromHeroResponseList(List<HeroResponse> responseList) {
         List<HeroHome> heroHomeList = new ArrayList<>();
 
         for (int i = 0; i < responseList.size(); i++) {
             HeroHome heroHome = new HeroHome(
+                    String.valueOf(responseList.get(i).getId()),
                     responseList.get(i).getImages().getMd(),
                     responseList.get(i).getName(),
                     getStatisticsFromPowerStatsResponse(responseList.get(i).getPowerstats()),
@@ -100,6 +32,18 @@ public class MapperToDomain {
         return heroHomeList;
     }
 
+    public HeroDetail getHeroDetailFromHeroResponse(HeroResponse heroResponse) {
+        return new HeroDetail(
+                String.valueOf(heroResponse.getId()),
+                heroResponse.getImages().getMd(),
+                heroResponse.getName(),
+                false,
+                getStatisticsFromPowerStatsResponse(heroResponse.getPowerstats()),
+                getAppearanceFromAppearanceResponse(heroResponse.getAppearance()),
+                getBiographyFromBiographyResponse(heroResponse.getBiography())
+        );
+    }
+
     public Statistics getStatisticsFromPowerStatsResponse(PowerstatsResponse powerstatsResponse) {
 
         return new Statistics(
@@ -109,5 +53,28 @@ public class MapperToDomain {
                 String.valueOf(powerstatsResponse.getDurability()),
                 String.valueOf(powerstatsResponse.getPower()),
                 String.valueOf(powerstatsResponse.getCombat()));
+    }
+
+    public Appearance getAppearanceFromAppearanceResponse(AppearanceResponse appearanceResponse) {
+
+        return new Appearance(
+            appearanceResponse.getGender(),
+            appearanceResponse.getRace(),
+            appearanceResponse.getHeight(),
+            appearanceResponse.getWeight(),
+            appearanceResponse.getEyeColor(),
+            appearanceResponse.getHairColor());
+    }
+
+    public Biography getBiographyFromBiographyResponse(BiographyResponse biographyResponse) {
+
+        return new Biography(
+                biographyResponse.getFullName(),
+                biographyResponse.getAlterEgos(),
+                biographyResponse.getAliases(),
+                biographyResponse.getPlaceOfBirth(),
+                biographyResponse.getFirstAppearance(),
+                biographyResponse.getPublisher(),
+                biographyResponse.getAlignment());
     }
 }
