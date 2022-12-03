@@ -5,13 +5,7 @@
 
     <string name="toolbar_title">Screen title</string>
     <string name="toolbar_home_title">Home</string>
-    <string name="toolbar_search_title">Search</string>
     <string name="toolbar_detail_title">Detail</string>
-
-    <!-- BOTTOM NAVIGATION BAR -->
-
-    <string name="home">Home</string>
-    <string name="search">Search</string>
 
     <!-- HERO LIST ITEM -->
 

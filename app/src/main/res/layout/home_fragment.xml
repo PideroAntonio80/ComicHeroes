@@ -8,10 +8,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchViewHeroes"
+        android:layout_width="@dimen/margin_padding_size_zero"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/margin_padding_size_xsmall"
+        android:background="@color/light_blue"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/HeroRecyclerList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="@dimen/margin_padding_size_zero"
+        android:layout_height="@dimen/margin_padding_size_zero"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchViewHeroes"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/hero_list_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

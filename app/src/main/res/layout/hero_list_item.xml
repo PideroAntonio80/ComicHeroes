@@ -22,7 +22,7 @@
         <ImageView
             android:id="@+id/HeroListPhoto"
             android:layout_width="@dimen/image_card_view_width"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/margin_padding_size_zero"
             android:contentDescription="@string/hero_list_image"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"

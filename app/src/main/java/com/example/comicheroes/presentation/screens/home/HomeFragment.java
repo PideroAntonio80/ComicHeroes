@@ -44,7 +44,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ((MainActivity) requireActivity()).showBottomBar();
+        ((MainActivity) requireActivity()).homeFragmentTitleWriter();
 
         viewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
 
