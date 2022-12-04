@@ -2,6 +2,10 @@
 <resources>
     <string name="app_name">ComicHeroes</string>
 
+    <!-- SPLASH TITLE -->
+
+    <string name="splash_title">HEROES DEL COMIC</string>
+
     <!-- TOOLBAR -->
 
     <string name="toolbar_title">Título de la pantalla</string>
@@ -42,7 +46,7 @@
     <string name="hero_detail_alias">Alias: %1$s</string>
     <string name="hero_detail_birth_place">Lugar de nacimiento: %1$s</string>
     <string name="hero_detail_first_appearance">Primera aparición: %1$s</string>
-    <string name="hero_detail_publisher">Publicaciones: %1$s</string>
+    <string name="hero_detail_publisher">Edición: %1$s</string>
     <string name="hero_detail_alignment">Alineación: %1$s</string>
 
 </resources>

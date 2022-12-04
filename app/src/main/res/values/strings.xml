@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">ComicHeroes</string>
 
+    <!-- SPLASH TITLE -->
+
+    <string name="splash_title">COMIC HEROES</string>
+
     <!-- TOOLBAR -->
 
     <string name="toolbar_title">Screen title</string>
@@ -43,5 +47,6 @@
     <string name="hero_detail_first_appearance">First appearance: %1$s</string>
     <string name="hero_detail_publisher">Publisher: %1$s</string>
     <string name="hero_detail_alignment">Alignment: %1$s</string>
+
 
 </resources>

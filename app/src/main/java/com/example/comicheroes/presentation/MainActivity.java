@@ -1,6 +1,7 @@
 package com.example.comicheroes.presentation;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -8,7 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.comicheroes.R;
 import com.example.comicheroes.databinding.ActivityMainBinding;
-import com.example.comicheroes.presentation.screens.home.HomeFragment;
+import com.example.comicheroes.presentation.screens.splash.SplashFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,10 +26,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void initView(){
 
-        showFragment(HomeFragment.newInstance());
+        showFragment(new SplashFragment());
 
         Toolbar toolbar = binding.mainActivityToolbar;
         setSupportActionBar(toolbar);
+    }
+
+    public void showToolBar() {
+        binding.mainActivityToolbar.setVisibility(View.VISIBLE);
+    }
+
+    public void hideToolBar() {
+        binding.mainActivityToolbar.setVisibility(View.GONE);
     }
 
     public void showBackArrow() {

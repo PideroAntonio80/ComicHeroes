@@ -63,6 +63,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ((MainActivity) requireActivity()).showToolBar();
         ((MainActivity) requireActivity()).hideBackArrow();
         ((MainActivity) requireActivity()).homeFragmentTitleWriter();
 
