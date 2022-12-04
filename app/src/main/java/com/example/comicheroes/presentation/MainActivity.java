@@ -7,6 +7,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.example.comicheroes.R;
+import com.example.comicheroes.data.localdb.database.HeroDatabase;
+import com.example.comicheroes.data.localdb.database.dao.HeroDAO;
 import com.example.comicheroes.databinding.ActivityMainBinding;
 import com.example.comicheroes.presentation.screens.home.HomeFragment;
 
@@ -28,8 +30,15 @@ public class MainActivity extends AppCompatActivity {
         showFragment(HomeFragment.newInstance());
 
         Toolbar toolbar = binding.mainActivityToolbar;
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
         setSupportActionBar(toolbar);
+    }
+
+    public void showBackArrow() {
+        binding.mainActivityToolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+    }
+
+    public void hideBackArrow() {
+        binding.mainActivityToolbar.setNavigationIcon(null);
     }
 
     public void showFragment(Fragment fragment) {

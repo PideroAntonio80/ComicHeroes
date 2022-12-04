@@ -15,13 +15,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="@dimen/margin_padding_size_xsmall"
+        android:layout_marginTop="@dimen/margin_padding_size_xsmall"
+        android:layout_marginHorizontal="@dimen/margin_padding_size_xsmall"
+        app:iconifiedByDefault="false"
+        app:queryHint="@string/search_view_hero"
         android:background="@color/light_blue"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/HeroRecyclerList"
         android:layout_width="@dimen/margin_padding_size_zero"
         android:layout_height="@dimen/margin_padding_size_zero"
+        android:layout_marginTop="@dimen/margin_padding_size_xsmall"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchViewHeroes"

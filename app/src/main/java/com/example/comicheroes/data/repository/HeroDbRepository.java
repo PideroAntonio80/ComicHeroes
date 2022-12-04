@@ -1,8 +1,5 @@
 package com.example.comicheroes.data.repository;
 
-import androidx.room.Delete;
-import androidx.room.Update;
-
 import com.example.comicheroes.data.localdb.model.HeroDB;
 
 import java.util.List;

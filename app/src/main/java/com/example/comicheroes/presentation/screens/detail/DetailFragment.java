@@ -57,6 +57,7 @@ public class DetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ((MainActivity) requireActivity()).showBackArrow();
         ((MainActivity) requireActivity()).detailFragmentTitleWriter();
 
         viewModel = new ViewModelProvider(requireActivity()).get(DetailViewModel.class);

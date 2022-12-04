@@ -7,24 +7,44 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.comicheroes.R;
+import com.example.comicheroes.data.localdb.database.HeroDatabase;
+import com.example.comicheroes.data.localdb.database.dao.HeroDAO;
+import com.example.comicheroes.data.localdb.mapper.Mapper;
+import com.example.comicheroes.data.localdb.model.HeroDB;
+import com.example.comicheroes.data.repository.HeroDbRepository;
+import com.example.comicheroes.data.repository.HeroDbRepositoryImp;
 import com.example.comicheroes.databinding.HomeFragmentBinding;
 import com.example.comicheroes.domain.model.HeroHome;
 import com.example.comicheroes.presentation.MainActivity;
 import com.example.comicheroes.presentation.screens.detail.DetailFragment;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements SearchView.OnQueryTextListener {
 
     private HomeFragmentBinding binding;
 
     private HomeViewModel viewModel;
+
+    private HeroListAdapter adapter;
+
+    private HeroDatabase db;
+    private HeroDAO dao;
+    private HeroDbRepository repo;
+
+    private Mapper mapper = new Mapper();
+
+    List<HeroDB> listFromDB;
+    List<HeroHome> myList;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -44,11 +64,34 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ((MainActivity) requireActivity()).hideBackArrow();
         ((MainActivity) requireActivity()).homeFragmentTitleWriter();
+
+        dbController();
 
         viewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
 
-        observeViewModel();
+        listFromDB = repo.getAllHeroes();
+
+        if (listFromDB != null && !listFromDB.isEmpty()) {
+            myList = new ArrayList<>();
+
+            for (int i = 0; i < listFromDB.size(); i++) {
+                myList.add(mapper.fromHeroDBToHeroHome(listFromDB.get(i)));
+            }
+
+            initComponents(myList);
+            initListener();
+        }
+        else {
+            observeViewModel();
+        }
+    }
+
+    public void dbController() {
+        db = HeroDatabase.getInstance(this.requireContext().getApplicationContext());
+        dao = db.heroDAO();
+        repo = new HeroDbRepositoryImp(dao);
     }
 
     private void initComponents(List<HeroHome> list) {
@@ -57,7 +100,7 @@ public class HomeFragment extends Fragment {
 
         binding.HeroRecyclerList.setHasFixedSize(true);
 
-        HeroListAdapter adapter = new HeroListAdapter(this.getContext(), list, item -> requireActivity()
+        adapter = new HeroListAdapter(this.getContext(), list, item -> requireActivity()
                 .getSupportFragmentManager()
                 .beginTransaction()
                 .setReorderingAllowed(true)
@@ -71,8 +114,36 @@ public class HomeFragment extends Fragment {
         viewModel.getHeroesListResponseLiveData().observe(getViewLifecycleOwner(), heroHomes -> {
 
             if (heroHomes != null && !heroHomes.isEmpty()) {
-                initComponents(heroHomes);
+
+                for (int i = 0; i < heroHomes.size(); i++) {
+                    repo.insertHero(mapper.fromHeroHomeToHeroDB(heroHomes.get(i)));
+                }
+
+                listFromDB = repo.getAllHeroes();
+                myList = new ArrayList<>();
+
+                for (int i = 0; i < listFromDB.size(); i++) {
+                    myList.add(mapper.fromHeroDBToHeroHome(listFromDB.get(i)));
+                }
+
+                initComponents(myList);
+                initListener();
             }
         });
+    }
+
+    private void initListener() {
+        binding.searchViewHeroes.setOnQueryTextListener(this);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        adapter.filter(newText);
+        return false;
     }
 }

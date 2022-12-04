@@ -1,6 +1,7 @@
 package com.example.comicheroes.presentation.screens.home;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,22 +11,38 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.comicheroes.R;
+import com.example.comicheroes.data.localdb.database.HeroDatabase;
+import com.example.comicheroes.data.localdb.database.dao.HeroDAO;
+import com.example.comicheroes.data.localdb.mapper.Mapper;
+import com.example.comicheroes.data.localdb.model.HeroDB;
+import com.example.comicheroes.data.repository.HeroDbRepository;
+import com.example.comicheroes.data.repository.HeroDbRepositoryImp;
 import com.example.comicheroes.databinding.HeroListItemBinding;
 import com.example.comicheroes.domain.model.HeroHome;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroListViewHolder> {
 
     private Context context;
     private List<HeroHome> heroHomeList;
+    private List<HeroHome> originalList;
 
     final HeroListAdapter.OnItemClickListener listener;
+
+    private HeroDatabase db;
+    private HeroDAO dao;
+    private HeroDbRepository repo;
+    private Mapper mapper = new Mapper();
 
     public HeroListAdapter(Context context, List<HeroHome> heroHomeList, HeroListAdapter.OnItemClickListener listener) {
         this.context = context;
         this.heroHomeList = heroHomeList;
         this.listener = listener;
+        this.originalList = new ArrayList<>();
+        originalList.addAll(heroHomeList);
     }
 
     @NonNull
@@ -43,20 +60,62 @@ public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroLi
 
         holder.binding.listFavouriteIcon.setOnClickListener(v -> {
 
-                holder.binding.listFavouriteIcon.setVisibility(View.GONE);
-                holder.binding.listFavouriteIconFilled.setVisibility(View.VISIBLE);
+            HeroDB updatedHero = new HeroDB(
+                    myHero.getId(),
+                    myHero.getImage(),
+                    myHero.getName(),
+                    myHero.getStatistics().getIntelligence(),
+                    myHero.getStatistics().getStrength(),
+                    myHero.getStatistics().getSpeed(),
+                    myHero.getStatistics().getDurability(),
+                    myHero.getStatistics().getPower(),
+                    myHero.getStatistics().getCombat(),
+                    true
+            );
+            repo.updateHero(updatedHero);
+
+            holder.binding.listFavouriteIcon.setVisibility(View.GONE);
+            holder.binding.listFavouriteIconFilled.setVisibility(View.VISIBLE);
         });
 
         holder.binding.listFavouriteIconFilled.setOnClickListener(v -> {
 
-                holder.binding.listFavouriteIcon.setVisibility(View.VISIBLE);
-                holder.binding.listFavouriteIconFilled.setVisibility(View.GONE);
+            myHero.setFavourite(false);
+            repo.updateHero(mapper.fromHeroHomeToHeroDB(myHero));
+
+            holder.binding.listFavouriteIcon.setVisibility(View.VISIBLE);
+            holder.binding.listFavouriteIconFilled.setVisibility(View.GONE);
         });
     }
 
     @Override
     public int getItemCount() {
         return heroHomeList == null ? 0 : heroHomeList.size();
+    }
+
+    public void filter(String strSearch) {
+        if (strSearch.length() == 0) {
+            heroHomeList.clear();
+            heroHomeList.addAll(originalList);
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                heroHomeList.clear();
+                List<HeroHome> collect = originalList.stream()
+                        .filter(i -> i.getName().toLowerCase().contains(strSearch.toLowerCase()))
+                        .collect(Collectors.toList());
+
+                heroHomeList.addAll(collect);
+            }
+            else {
+                heroHomeList.clear();
+                for (HeroHome i : originalList) {
+                    if (i.getName().toLowerCase().contains(strSearch.toLowerCase())) {
+                        heroHomeList.add(i);
+                    }
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
     public class HeroListViewHolder extends RecyclerView.ViewHolder {
@@ -98,5 +157,11 @@ public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroLi
 
     public interface OnItemClickListener {
         void onItemClick(HeroHome item);
+    }
+
+    public void dbController() {
+        db = HeroDatabase.getInstance(this.context.getApplicationContext());
+        dao = db.heroDAO();
+        repo = new HeroDbRepositoryImp(dao);
     }
 }

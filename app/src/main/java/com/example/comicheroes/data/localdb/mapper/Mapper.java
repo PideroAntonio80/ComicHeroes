@@ -1,6 +1,7 @@
 package com.example.comicheroes.data.localdb.mapper;
 
 import com.example.comicheroes.data.localdb.model.HeroDB;
+import com.example.comicheroes.data.network.model.HeroResponse;
 import com.example.comicheroes.domain.model.HeroHome;
 import com.example.comicheroes.domain.model.Statistics;
 
@@ -18,7 +19,8 @@ public class Mapper {
                 heroHome.getStatistics().getDurability(),
                 heroHome.getStatistics().getPower(),
                 heroHome.getStatistics().getCombat(),
-                heroHome.getFavourite());
+                false
+        );
     }
 
     public HeroHome fromHeroDBToHeroHome(HeroDB heroDB) {

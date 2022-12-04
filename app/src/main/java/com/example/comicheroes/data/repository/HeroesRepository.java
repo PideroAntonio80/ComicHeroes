@@ -27,6 +27,8 @@ public class HeroesRepository {
         api = RetrofitApiClientGenerator.getRetrofitInstance().create(ApiServices.class);
     }
 
+    /** We get the complete list of heroes */
+
     public LiveData<List<HeroHome>> getHeroesList() {
 
         final MutableLiveData<List<HeroHome>> data = new MutableLiveData<>();
@@ -46,6 +48,8 @@ public class HeroesRepository {
         });
         return data;
     }
+
+    /** We get one hero from our choice filtered by id */
 
     public LiveData<HeroDetail> getHeroDetail(String idHero) {
 

@@ -8,9 +8,9 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/card_view_height"
     android:layout_marginHorizontal="@dimen/margin_padding_size_xsmall"
-    android:layout_marginTop="@dimen/margin_padding_size_xsmall"
+    android:layout_marginBottom="@dimen/margin_padding_size_xsmall"
     app:cardCornerRadius="@dimen/margin_padding_size_xsmall"
-    app:cardElevation="@dimen/margin_padding_size_medium">
+    app:cardElevation="@dimen/margin_padding_size_very_xxsmall">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
