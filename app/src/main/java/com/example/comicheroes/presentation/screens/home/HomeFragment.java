@@ -22,7 +22,6 @@ import com.example.comicheroes.data.repository.HeroDbRepository;
 import com.example.comicheroes.data.repository.HeroDbRepositoryImp;
 import com.example.comicheroes.databinding.HomeFragmentBinding;
 import com.example.comicheroes.domain.model.HeroDetail;
-import com.example.comicheroes.domain.model.HeroHome;
 import com.example.comicheroes.presentation.MainActivity;
 import com.example.comicheroes.presentation.screens.detail.DetailFragment;
 

@@ -25,8 +25,6 @@ public class DetailFragment extends Fragment {
 
     private DetailFragmentBinding binding;
 
-//    private DetailViewModel viewModel;
-
     private HeroDetail myHeroDetailed;
     private String id;
     private static final String EXTRA_ID = "param1";
@@ -73,12 +71,9 @@ public class DetailFragment extends Fragment {
 
         dbController();
 
-//        viewModel = new ViewModelProvider(requireActivity()).get(DetailViewModel.class);
         myHeroDetailed = getHeroById(id);
 
         initComponents(myHeroDetailed);
-
-//        observeViewModel();
     }
 
     public void dbController() {
@@ -116,8 +111,8 @@ public class DetailFragment extends Fragment {
 
         binding.heroDetailGender.setText(getString(R.string.hero_detail_gender, heroDetail.getAppearance().getGender()));
         binding.heroDetailRace.setText(getString(R.string.hero_detail_race, heroDetail.getAppearance().getRace()));
-        binding.heroDetailHeight.setText(getString(R.string.hero_detail_height, heroDetail.getAppearance().getHeight().get(0)));
-        binding.heroDetailWeight.setText(getString(R.string.hero_detail_weight, heroDetail.getAppearance().getWeight().get(0)));
+        binding.heroDetailHeight.setText(getString(R.string.hero_detail_height, heroDetail.getAppearance().getHeight().get(1)));
+        binding.heroDetailWeight.setText(getString(R.string.hero_detail_weight, heroDetail.getAppearance().getWeight().get(1)));
         binding.heroDetailEyeColor.setText(getString(R.string.hero_detail_eyes_color, heroDetail.getAppearance().getEyeColor()));
         binding.heroDetailHairColor.setText(getString(R.string.hero_detail_hair_color, heroDetail.getAppearance().getHairColor()));
 
@@ -133,26 +128,18 @@ public class DetailFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 isFavourite = !isFavourite;
+                HeroDB updatedHero = mapper.fromHeroDetailToHeroDB(heroDetail);
 
                 if (isFavourite) {
-                    myHeroDetailed.setFavourite(true);
-                    repo.updateHero(mapper.fromHeroDetailToHeroDB(myHeroDetailed));
+                    updatedHero.setFavourite(true);
+                    repo.updateHero(updatedHero);
                     binding.detailFavouriteIconFilled.setVisibility(View.VISIBLE);
                 } else {
-                    myHeroDetailed.setFavourite(false);
-                    repo.updateHero(mapper.fromHeroDetailToHeroDB(myHeroDetailed));
+                    updatedHero.setFavourite(false);
+                    repo.updateHero(updatedHero);
                     binding.detailFavouriteIconFilled.setVisibility(View.GONE);
                 }
             }
         });
     }
-
-//    private void observeViewModel() {
-//        viewModel.getHeroDetailResponseLiveData(id).observe(getViewLifecycleOwner(), heroDetail -> {
-//
-//            if (heroDetail != null) {
-//                initComponents(heroDetail);
-//            }
-//        });
-//    }
 }

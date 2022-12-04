@@ -86,19 +86,6 @@ public class HeroDB {
 
     /** CONSTRUCTOR */
 
-//    public HeroDB(@NonNull String id, String image, String name, String intelligence, String strength, String speed, String durability, String power, String combat, boolean isFavourite) {
-//        this.id = id;
-//        this.image = image;  todo; borrar
-//        this.name = name;
-//        this.intelligence = intelligence;
-//        this.strength = strength;
-//        this.speed = speed;
-//        this.durability = durability;
-//        this.power = power;
-//        this.combat = combat;
-//        this.isFavourite = isFavourite;
-//    }
-
     public HeroDB(@NonNull String id, String image, String name, String intelligence, String strength, String speed, String durability, String power, String combat, boolean isFavourite,
                   String gender, String race, String heightInFeet, String heightInMetres, String weightInPounds, String weightInKilos, String eyeColor, String hairColor,
                   String fullName, String alterEgos, String alias, String placeOfBirth, String firstAppearance, String publisher, String alignment) {

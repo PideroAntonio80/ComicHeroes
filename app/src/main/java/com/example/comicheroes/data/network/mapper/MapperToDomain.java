@@ -7,7 +7,6 @@ import com.example.comicheroes.data.network.model.PowerstatsResponse;
 import com.example.comicheroes.domain.model.Appearance;
 import com.example.comicheroes.domain.model.Biography;
 import com.example.comicheroes.domain.model.HeroDetail;
-import com.example.comicheroes.domain.model.HeroHome;
 import com.example.comicheroes.domain.model.Statistics;
 
 import java.util.ArrayList;
@@ -34,18 +33,6 @@ public class MapperToDomain {
 
         return heroDetailList;
     }
-
-//    public HeroDetail getHeroDetailFromHeroResponse(HeroResponse heroResponse) {
-//        return new HeroDetail(
-//                String.valueOf(heroResponse.getId()),
-//                heroResponse.getImages().getMd(),
-//                heroResponse.getName(),
-//                false,
-//                getStatisticsFromPowerStatsResponse(heroResponse.getPowerstats()),
-//                getAppearanceFromAppearanceResponse(heroResponse.getAppearance()),
-//                getBiographyFromBiographyResponse(heroResponse.getBiography())
-//        );
-//    }
 
     public Statistics getStatisticsFromPowerStatsResponse(PowerstatsResponse powerstatsResponse) {
 

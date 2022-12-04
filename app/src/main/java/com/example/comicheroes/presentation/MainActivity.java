@@ -7,8 +7,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.example.comicheroes.R;
-import com.example.comicheroes.data.localdb.database.HeroDatabase;
-import com.example.comicheroes.data.localdb.database.dao.HeroDAO;
 import com.example.comicheroes.databinding.ActivityMainBinding;
 import com.example.comicheroes.presentation.screens.home.HomeFragment;
 

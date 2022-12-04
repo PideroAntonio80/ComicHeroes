@@ -62,33 +62,8 @@ public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroLi
 
         holder.binding.listFavouriteIcon.setOnClickListener(v -> {
 
-            HeroDB updatedHero = new HeroDB(
-                    myHero.getId(),
-                    myHero.getImage(),
-                    myHero.getName(),
-                    myHero.getStatistics().getIntelligence(),
-                    myHero.getStatistics().getStrength(),
-                    myHero.getStatistics().getSpeed(),
-                    myHero.getStatistics().getDurability(),
-                    myHero.getStatistics().getPower(),
-                    myHero.getStatistics().getCombat(),
-                    true,
-                    myHero.getAppearance().getGender(),
-                    myHero.getAppearance().getRace(),
-                    myHero.getAppearance().getHeight().get(0),
-                    myHero.getAppearance().getHeight().get(1),
-                    myHero.getAppearance().getWeight().get(0),
-                    myHero.getAppearance().getWeight().get(1),
-                    myHero.getAppearance().getEyeColor(),
-                    myHero.getAppearance().getHairColor(),
-                    myHero.getBiography().getFullName(),
-                    myHero.getBiography().getAlterEgos(),
-                    myHero.getBiography().getAliases().get(0),
-                    myHero.getBiography().getPlaceOfBirth(),
-                    myHero.getBiography().getFirstAppearance(),
-                    myHero.getBiography().getPublisher(),
-                    myHero.getBiography().getAlignment()
-            );
+            HeroDB updatedHero = mapper.fromHeroDetailToHeroDB(myHero);
+            updatedHero.setFavourite(true);
             repo.updateHero(updatedHero);
 
             holder.binding.listFavouriteIcon.setVisibility(View.GONE);
@@ -97,33 +72,8 @@ public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroLi
 
         holder.binding.listFavouriteIconFilled.setOnClickListener(v -> {
 
-            HeroDB updatedHero = new HeroDB(
-                    myHero.getId(),
-                    myHero.getImage(),
-                    myHero.getName(),
-                    myHero.getStatistics().getIntelligence(),
-                    myHero.getStatistics().getStrength(),
-                    myHero.getStatistics().getSpeed(),
-                    myHero.getStatistics().getDurability(),
-                    myHero.getStatistics().getPower(),
-                    myHero.getStatistics().getCombat(),
-                    false,
-                    myHero.getAppearance().getGender(),
-                    myHero.getAppearance().getRace(),
-                    myHero.getAppearance().getHeight().get(0),
-                    myHero.getAppearance().getHeight().get(1),
-                    myHero.getAppearance().getWeight().get(0),
-                    myHero.getAppearance().getWeight().get(1),
-                    myHero.getAppearance().getEyeColor(),
-                    myHero.getAppearance().getHairColor(),
-                    myHero.getBiography().getFullName(),
-                    myHero.getBiography().getAlterEgos(),
-                    myHero.getBiography().getAliases().get(0),
-                    myHero.getBiography().getPlaceOfBirth(),
-                    myHero.getBiography().getFirstAppearance(),
-                    myHero.getBiography().getPublisher(),
-                    myHero.getBiography().getAlignment()
-            );
+            HeroDB updatedHero = mapper.fromHeroDetailToHeroDB(myHero);
+            updatedHero.setFavourite(false);
             repo.updateHero(updatedHero);
 
             holder.binding.listFavouriteIcon.setVisibility(View.VISIBLE);

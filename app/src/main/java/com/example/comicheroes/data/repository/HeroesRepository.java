@@ -47,29 +47,6 @@ public class HeroesRepository {
         });
         return data;
     }
-
-    /** We get one hero from our choice filtered by id. It is not used since we have our database
-     todo; borrar esta función */
-
-//    public LiveData<HeroDetail> getHeroDetail(String idHero) {
-//
-//        final MutableLiveData<HeroDetail> data = new MutableLiveData<>();
-//        api.getHeroById(idHero).enqueue(new Callback<HeroResponse>() {
-//
-//            @Override
-//            public void onResponse(Call<HeroResponse> call, Response<HeroResponse> response) {
-//                if (response.body() != null) {
-//                    data.setValue(mapperToDomain.getHeroDetailFromHeroResponse(response.body()));
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<HeroResponse> call, Throwable t) {
-//                data.setValue(null);
-//            }
-//        });
-//        return data;
-//    }
 }
 
 

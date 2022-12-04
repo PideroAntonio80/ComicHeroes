@@ -24,8 +24,8 @@
 
     <!-- HERO DETAIL -->
 
-    <string name="hero_detail_image">hero list image</string>
-    <string name="favourite_floating_button_detail">favourite hero from detail</string>
+    <string name="hero_detail_image">hero detail image</string>
+    <string name="favourite_floating_button_detail">Floating button image</string>
     <string name="hero_detail_appearance_title">APPEARANCE</string>
     <string name="hero_detail_biography_title">BIOGRAPHY</string>
 

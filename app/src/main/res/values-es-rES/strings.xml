@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ComicHeroes</string>
+
+    <!-- TOOLBAR -->
+
+    <string name="toolbar_title">Título de la pantalla</string>
+    <string name="toolbar_home_title">Lista principal</string>
+    <string name="toolbar_detail_title">Ficha detalle</string>
+
+    <!-- HOME FRAGMENT -->
+
+    <string name="search_view_hero">Búsqueda por nombre…</string>
+
+    <!-- HERO LIST ITEM -->
+
+    <string name="hero_list_image">Imagen del héroe de la lista</string>
+    <string name="favourite_icon_list">héroe favorito en la lista</string>
+    <string name="hero_list_intelligence">Inteligencia: %1$s</string>
+    <string name="hero_list_strength">Fuerza: %1$s</string>
+    <string name="hero_list_speed">Velocidad: %1$s</string>
+    <string name="hero_list_durability">Resistencia: %1$s</string>
+    <string name="hero_list_power">Poder: %1$s</string>
+    <string name="hero_list_combat">Combate: %1$s</string>
+
+    <!-- HERO DETAIL -->
+
+    <string name="hero_detail_image">Imagen del detalle de héroe</string>
+    <string name="favourite_floating_button_detail">Imagen del botón flotante</string>
+    <string name="hero_detail_appearance_title">Apariencia física</string>
+    <string name="hero_detail_biography_title">Biografía</string>
+
+    <string name="hero_detail_gender">Género: %1$s</string>
+    <string name="hero_detail_race">Raza: %1$s</string>
+    <string name="hero_detail_height">Altura: %1$s</string>
+    <string name="hero_detail_weight">Peso: %1$s</string>
+    <string name="hero_detail_eyes_color">Color de ojos: %1$s</string>
+    <string name="hero_detail_hair_color">Color de pelo: %1$s</string>
+
+    <string name="hero_detail_full_name">Nombre completo: %1$s</string>
+    <string name="hero_detail_alter_egos">Alter ego: %1$s</string>
+    <string name="hero_detail_alias">Alias: %1$s</string>
+    <string name="hero_detail_birth_place">Lugar de nacimiento: %1$s</string>
+    <string name="hero_detail_first_appearance">Primera aparición: %1$s</string>
+    <string name="hero_detail_publisher">Publicaciones: %1$s</string>
+    <string name="hero_detail_alignment">Alineación: %1$s</string>
+
+</resources>
