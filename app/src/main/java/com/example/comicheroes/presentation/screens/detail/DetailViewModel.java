@@ -12,19 +12,19 @@ import com.example.comicheroes.domain.usecase.GetHeroDetailUseCase;
 
 public class DetailViewModel extends AndroidViewModel {
 
-    private GetHeroDetailUseCase getHeroDetailUseCase;
-    private HeroesRepository heroesRepository;
-    private LiveData<HeroDetail> heroDetailLiveData;
+//    private GetHeroDetailUseCase getHeroDetailUseCase;
+//    private HeroesRepository heroesRepository;
+//    private LiveData<HeroDetail> heroDetailLiveData;
 
     public DetailViewModel(@NonNull Application application) {
         super(application);
 
-        heroesRepository = new HeroesRepository();
-        getHeroDetailUseCase = new GetHeroDetailUseCase(heroesRepository);
+//        heroesRepository = new HeroesRepository();
+//        getHeroDetailUseCase = new GetHeroDetailUseCase(heroesRepository);
     }
 
-    public LiveData<HeroDetail> getHeroDetailResponseLiveData(String idHero) {
-        this.heroDetailLiveData = getHeroDetailUseCase.runUseCase(idHero);
-        return heroDetailLiveData;
-    }
+//    public LiveData<HeroDetail> getHeroDetailResponseLiveData(String idHero) {
+//        this.heroDetailLiveData = getHeroDetailUseCase.runUseCase(idHero);
+//        return heroDetailLiveData;
+//    }
 }

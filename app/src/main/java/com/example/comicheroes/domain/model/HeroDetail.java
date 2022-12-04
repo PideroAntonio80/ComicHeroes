@@ -10,7 +10,7 @@ public class HeroDetail {
     private Appearance appearance;
     private Biography biography;
 
-    /** CONSTRUCTOR */
+    /** CONSTRUCTORS */
 
     public HeroDetail(String id, String image, String name, Boolean isFavourite, Statistics statistics, Appearance appearance, Biography biography) {
         this.id = id;
@@ -20,6 +20,14 @@ public class HeroDetail {
         this.statistics = statistics;
         this.appearance = appearance;
         this.biography = biography;
+    }
+
+    public HeroDetail(String id, String image, String name, Boolean isFavourite, Statistics statistics) {
+        this.id = id;
+        this.image = image;
+        this.name = name;
+        this.isFavourite = isFavourite;
+        this.statistics = statistics;
     }
 
     /** GETTERS & SETTERS */

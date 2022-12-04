@@ -2,6 +2,7 @@ package com.example.comicheroes.data.localdb.database;
 
 import android.content.Context;
 
+import androidx.room.AutoMigration;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
@@ -9,7 +10,12 @@ import androidx.room.RoomDatabase;
 import com.example.comicheroes.data.localdb.database.dao.HeroDAO;
 import com.example.comicheroes.data.localdb.model.HeroDB;
 
-@Database(entities = {HeroDB.class}, version = 1)
+@Database(
+        entities = {HeroDB.class},
+        version = 3,
+        autoMigrations = {@AutoMigration(from = 2, to = 3)},
+        exportSchema = true
+)
 public abstract class HeroDatabase extends RoomDatabase {
 
     private static volatile HeroDatabase INSTANCE;

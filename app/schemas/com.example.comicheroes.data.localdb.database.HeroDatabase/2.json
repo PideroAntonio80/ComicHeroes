@@ -1,0 +1,178 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "a1731aaca926b0cef75d3e0f8f78a17c",
+    "entities": [
+      {
+        "tableName": "hero_db",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `image` TEXT, `name` TEXT, `intelligence` TEXT, `strength` TEXT, `speed` TEXT, `durability` TEXT, `power` TEXT, `combat` TEXT, `isFavourite` INTEGER NOT NULL, `gender` TEXT, `race` TEXT, `heightInFeet` TEXT, `heightInMetres` TEXT, `weightInPounds` TEXT, `weightInKilos` TEXT, `eyeColor` TEXT, `hairColor` TEXT, `fullName` TEXT, `alterEgos` TEXT, `alias` TEXT, `placeOfBirth` TEXT, `firstAppearance` TEXT, `publisher` TEXT, `alignment` TEXT, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "image",
+            "columnName": "image",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "intelligence",
+            "columnName": "intelligence",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "strength",
+            "columnName": "strength",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "speed",
+            "columnName": "speed",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "durability",
+            "columnName": "durability",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "power",
+            "columnName": "power",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "combat",
+            "columnName": "combat",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isFavourite",
+            "columnName": "isFavourite",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gender",
+            "columnName": "gender",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "race",
+            "columnName": "race",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "heightInFeet",
+            "columnName": "heightInFeet",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "heightInMetres",
+            "columnName": "heightInMetres",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "weightInPounds",
+            "columnName": "weightInPounds",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "weightInKilos",
+            "columnName": "weightInKilos",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "eyeColor",
+            "columnName": "eyeColor",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hairColor",
+            "columnName": "hairColor",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fullName",
+            "columnName": "fullName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "alterEgos",
+            "columnName": "alterEgos",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "alias",
+            "columnName": "alias",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "placeOfBirth",
+            "columnName": "placeOfBirth",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "firstAppearance",
+            "columnName": "firstAppearance",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "publisher",
+            "columnName": "publisher",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "alignment",
+            "columnName": "alignment",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a1731aaca926b0cef75d3e0f8f78a17c')"
+    ]
+  }
+}

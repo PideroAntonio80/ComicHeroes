@@ -21,13 +21,13 @@ import com.example.comicheroes.data.localdb.model.HeroDB;
 import com.example.comicheroes.data.repository.HeroDbRepository;
 import com.example.comicheroes.data.repository.HeroDbRepositoryImp;
 import com.example.comicheroes.databinding.HomeFragmentBinding;
+import com.example.comicheroes.domain.model.HeroDetail;
 import com.example.comicheroes.domain.model.HeroHome;
 import com.example.comicheroes.presentation.MainActivity;
 import com.example.comicheroes.presentation.screens.detail.DetailFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class HomeFragment extends Fragment implements SearchView.OnQueryTextListener {
 
@@ -41,10 +41,10 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
     private HeroDAO dao;
     private HeroDbRepository repo;
 
-    private Mapper mapper = new Mapper();
+    private Mapper mapper;
 
     List<HeroDB> listFromDB;
-    List<HeroHome> myList;
+    List<HeroDetail> myList;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -77,7 +77,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
             myList = new ArrayList<>();
 
             for (int i = 0; i < listFromDB.size(); i++) {
-                myList.add(mapper.fromHeroDBToHeroHome(listFromDB.get(i)));
+                myList.add(mapper.fromHeroDBToHeroDetail(listFromDB.get(i)));
             }
 
             initComponents(myList);
@@ -92,9 +92,10 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
         db = HeroDatabase.getInstance(this.requireContext().getApplicationContext());
         dao = db.heroDAO();
         repo = new HeroDbRepositoryImp(dao);
+        mapper = new Mapper();
     }
 
-    private void initComponents(List<HeroHome> list) {
+    private void initComponents(List<HeroDetail> list) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getContext());
         binding.HeroRecyclerList.setLayoutManager(layoutManager);
 
@@ -111,19 +112,19 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
     }
 
     private void observeViewModel() {
-        viewModel.getHeroesListResponseLiveData().observe(getViewLifecycleOwner(), heroHomes -> {
+        viewModel.getHeroesListResponseLiveData().observe(getViewLifecycleOwner(), heroDetails -> {
 
-            if (heroHomes != null && !heroHomes.isEmpty()) {
+            if (heroDetails != null && !heroDetails.isEmpty()) {
 
-                for (int i = 0; i < heroHomes.size(); i++) {
-                    repo.insertHero(mapper.fromHeroHomeToHeroDB(heroHomes.get(i)));
+                for (int i = 0; i < heroDetails.size(); i++) {
+                    repo.insertHero(mapper.fromHeroDetailToHeroDB(heroDetails.get(i)));
                 }
 
                 listFromDB = repo.getAllHeroes();
                 myList = new ArrayList<>();
 
                 for (int i = 0; i < listFromDB.size(); i++) {
-                    myList.add(mapper.fromHeroDBToHeroHome(listFromDB.get(i)));
+                    myList.add(mapper.fromHeroDBToHeroDetail(listFromDB.get(i)));
                 }
 
                 initComponents(myList);

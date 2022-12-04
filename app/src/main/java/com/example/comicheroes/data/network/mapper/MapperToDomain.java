@@ -15,34 +15,37 @@ import java.util.List;
 
 public class MapperToDomain {
 
-    public List<HeroHome> getHeroHomeListFromHeroResponseList(List<HeroResponse> responseList) {
-        List<HeroHome> heroHomeList = new ArrayList<>();
+    public List<HeroDetail> getHeroDetailListFromHeroResponseList(List<HeroResponse> responseList) {
+        List<HeroDetail> heroDetailList = new ArrayList<>();
 
         for (int i = 0; i < responseList.size(); i++) {
-            HeroHome heroHome = new HeroHome(
+            HeroDetail heroDetail = new HeroDetail(
                     String.valueOf(responseList.get(i).getId()),
                     responseList.get(i).getImages().getMd(),
                     responseList.get(i).getName(),
+                    false,
                     getStatisticsFromPowerStatsResponse(responseList.get(i).getPowerstats()),
-                    false);
+                    getAppearanceFromAppearanceResponse(responseList.get(i).getAppearance()),
+                    getBiographyFromBiographyResponse(responseList.get(i).getBiography())
+                    );
 
-            heroHomeList.add(heroHome);
+            heroDetailList.add(heroDetail);
         }
 
-        return heroHomeList;
+        return heroDetailList;
     }
 
-    public HeroDetail getHeroDetailFromHeroResponse(HeroResponse heroResponse) {
-        return new HeroDetail(
-                String.valueOf(heroResponse.getId()),
-                heroResponse.getImages().getMd(),
-                heroResponse.getName(),
-                false,
-                getStatisticsFromPowerStatsResponse(heroResponse.getPowerstats()),
-                getAppearanceFromAppearanceResponse(heroResponse.getAppearance()),
-                getBiographyFromBiographyResponse(heroResponse.getBiography())
-        );
-    }
+//    public HeroDetail getHeroDetailFromHeroResponse(HeroResponse heroResponse) {
+//        return new HeroDetail(
+//                String.valueOf(heroResponse.getId()),
+//                heroResponse.getImages().getMd(),
+//                heroResponse.getName(),
+//                false,
+//                getStatisticsFromPowerStatsResponse(heroResponse.getPowerstats()),
+//                getAppearanceFromAppearanceResponse(heroResponse.getAppearance()),
+//                getBiographyFromBiographyResponse(heroResponse.getBiography())
+//        );
+//    }
 
     public Statistics getStatisticsFromPowerStatsResponse(PowerstatsResponse powerstatsResponse) {
 
@@ -52,7 +55,8 @@ public class MapperToDomain {
                 String.valueOf(powerstatsResponse.getSpeed()),
                 String.valueOf(powerstatsResponse.getDurability()),
                 String.valueOf(powerstatsResponse.getPower()),
-                String.valueOf(powerstatsResponse.getCombat()));
+                String.valueOf(powerstatsResponse.getCombat())
+        );
     }
 
     public Appearance getAppearanceFromAppearanceResponse(AppearanceResponse appearanceResponse) {
@@ -63,7 +67,8 @@ public class MapperToDomain {
             appearanceResponse.getHeight(),
             appearanceResponse.getWeight(),
             appearanceResponse.getEyeColor(),
-            appearanceResponse.getHairColor());
+            appearanceResponse.getHairColor()
+        );
     }
 
     public Biography getBiographyFromBiographyResponse(BiographyResponse biographyResponse) {
@@ -75,6 +80,7 @@ public class MapperToDomain {
                 biographyResponse.getPlaceOfBirth(),
                 biographyResponse.getFirstAppearance(),
                 biographyResponse.getPublisher(),
-                biographyResponse.getAlignment());
+                biographyResponse.getAlignment()
+        );
     }
 }

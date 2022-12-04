@@ -8,10 +8,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
 import com.example.comicheroes.R;
+import com.example.comicheroes.data.localdb.database.HeroDatabase;
+import com.example.comicheroes.data.localdb.database.dao.HeroDAO;
+import com.example.comicheroes.data.localdb.mapper.Mapper;
+import com.example.comicheroes.data.localdb.model.HeroDB;
+import com.example.comicheroes.data.repository.HeroDbRepository;
+import com.example.comicheroes.data.repository.HeroDbRepositoryImp;
 import com.example.comicheroes.databinding.DetailFragmentBinding;
 import com.example.comicheroes.domain.model.HeroDetail;
 import com.example.comicheroes.presentation.MainActivity;
@@ -20,12 +25,18 @@ public class DetailFragment extends Fragment {
 
     private DetailFragmentBinding binding;
 
-    private DetailViewModel viewModel;
+//    private DetailViewModel viewModel;
 
+    private HeroDetail myHeroDetailed;
     private String id;
     private static final String EXTRA_ID = "param1";
 
-    private boolean isFavourite = false;
+    private boolean isFavourite;
+
+    private HeroDatabase db;
+    private HeroDAO dao;
+    private HeroDbRepository repo;
+    private Mapper mapper;
 
     public static DetailFragment newInstance(String idHero) {
         DetailFragment fragment = new DetailFragment();
@@ -60,9 +71,26 @@ public class DetailFragment extends Fragment {
         ((MainActivity) requireActivity()).showBackArrow();
         ((MainActivity) requireActivity()).detailFragmentTitleWriter();
 
-        viewModel = new ViewModelProvider(requireActivity()).get(DetailViewModel.class);
+        dbController();
 
-        observeViewModel();
+//        viewModel = new ViewModelProvider(requireActivity()).get(DetailViewModel.class);
+        myHeroDetailed = getHeroById(id);
+
+        initComponents(myHeroDetailed);
+
+//        observeViewModel();
+    }
+
+    public void dbController() {
+        db = HeroDatabase.getInstance(this.requireContext().getApplicationContext());
+        dao = db.heroDAO();
+        repo = new HeroDbRepositoryImp(dao);
+        mapper = new Mapper();
+    }
+
+    private HeroDetail getHeroById(String idHero) {
+        HeroDB heroDB = repo.findHeroById(idHero);
+        return mapper.fromHeroDBToHeroDetail(heroDB);
     }
 
     private void initComponents(HeroDetail heroDetail) {
@@ -70,6 +98,14 @@ public class DetailFragment extends Fragment {
         Glide.with(this.requireContext()).load(heroDetail.getImage()).into(binding.heroDetailPhoto);
 
         binding.heroDetailName.setText(heroDetail.getName());
+
+        if (heroDetail.getFavourite()) {
+            binding.detailFavouriteIconFilled.setVisibility(View.VISIBLE);
+            isFavourite = true;
+        } else {
+            binding.detailFavouriteIconFilled.setVisibility(View.GONE);
+            isFavourite = false;
+        }
 
         binding.heroDetailIntelligence.setText(getString(R.string.hero_list_intelligence, heroDetail.getStatistics().getIntelligence()));
         binding.heroDetailStrength.setText(getString(R.string.hero_list_strength, heroDetail.getStatistics().getStrength()));
@@ -99,20 +135,24 @@ public class DetailFragment extends Fragment {
                 isFavourite = !isFavourite;
 
                 if (isFavourite) {
+                    myHeroDetailed.setFavourite(true);
+                    repo.updateHero(mapper.fromHeroDetailToHeroDB(myHeroDetailed));
                     binding.detailFavouriteIconFilled.setVisibility(View.VISIBLE);
                 } else {
+                    myHeroDetailed.setFavourite(false);
+                    repo.updateHero(mapper.fromHeroDetailToHeroDB(myHeroDetailed));
                     binding.detailFavouriteIconFilled.setVisibility(View.GONE);
                 }
             }
         });
     }
 
-    private void observeViewModel() {
-        viewModel.getHeroDetailResponseLiveData(id).observe(getViewLifecycleOwner(), heroDetail -> {
-
-            if (heroDetail != null) {
-                initComponents(heroDetail);
-            }
-        });
-    }
+//    private void observeViewModel() {
+//        viewModel.getHeroDetailResponseLiveData(id).observe(getViewLifecycleOwner(), heroDetail -> {
+//
+//            if (heroDetail != null) {
+//                initComponents(heroDetail);
+//            }
+//        });
+//    }
 }

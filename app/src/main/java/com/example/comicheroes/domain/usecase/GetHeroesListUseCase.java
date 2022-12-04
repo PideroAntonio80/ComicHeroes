@@ -3,7 +3,7 @@ package com.example.comicheroes.domain.usecase;
 import androidx.lifecycle.LiveData;
 
 import com.example.comicheroes.data.repository.HeroesRepository;
-import com.example.comicheroes.domain.model.HeroHome;
+import com.example.comicheroes.domain.model.HeroDetail;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class GetHeroesListUseCase {
         this.repository = repository;
     }
 
-    public LiveData<List<HeroHome>> runUseCase() {
+    public LiveData<List<HeroDetail>> runUseCase() {
 
         return repository.getHeroesList();
     }
