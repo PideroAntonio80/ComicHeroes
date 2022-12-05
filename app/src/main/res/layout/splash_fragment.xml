@@ -8,6 +8,8 @@
     android:layout_height="match_parent"
     android:background="@color/black_500">
 
+    <!--APP TITLE TEXT-->
+
     <TextView
         android:id="@+id/splashTitle"
         style="@style/detailNameTextStyle"
@@ -16,6 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/margin_padding_size_medium"
         android:text="@string/splash_title" />
+
+    <!--ANIMATION-->
 
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="0dp"

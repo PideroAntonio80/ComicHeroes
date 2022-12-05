@@ -14,6 +14,7 @@ import java.util.List;
 
 public class MapperToDomain {
 
+    // Function that maps from a HeroResponse object to a HeroDetail object
     public List<HeroDetail> getHeroDetailListFromHeroResponseList(List<HeroResponse> responseList) {
         List<HeroDetail> heroDetailList = new ArrayList<>();
 

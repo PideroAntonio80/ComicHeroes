@@ -86,6 +86,7 @@ public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroLi
         return HeroDetailList == null ? 0 : HeroDetailList.size();
     }
 
+    // Dynamic filtered search by name
     public void filter(String strSearch) {
         if (strSearch.length() == 0) {
             HeroDetailList.clear();
@@ -120,6 +121,7 @@ public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroLi
             this.binding = binding;
         }
 
+        // Painting data in each cell of the list
         public void bindData(HeroDetail heroDetail) {
             Glide.with(context).load(heroDetail.getImage()).into(binding.HeroListPhoto);
 
@@ -148,10 +150,12 @@ public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroLi
         }
     }
 
+    // Interface we use to listen to the hero user press to see its details
     public interface OnItemClickListener {
         void onItemClick(HeroDetail item);
     }
 
+    // Init database
     public void dbController() {
         db = HeroDatabase.getInstance(this.context.getApplicationContext());
         dao = db.heroDAO();

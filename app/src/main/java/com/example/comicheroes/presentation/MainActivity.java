@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         initView();
     }
 
+    // Control the first fragment we show
     public void initView(){
 
         showFragment(new SplashFragment());
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         binding.mainActivityToolbar.setNavigationIcon(null);
     }
 
+    // Function to change fragments
     public void showFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, fragment).addToBackStack(null).commit();
     }

@@ -10,6 +10,7 @@ import androidx.room.RoomDatabase;
 import com.example.comicheroes.data.localdb.database.dao.HeroDAO;
 import com.example.comicheroes.data.localdb.model.HeroDB;
 
+// Configuration of my SQLite database
 @Database(
         entities = {HeroDB.class},
         version = 3,

@@ -5,6 +5,7 @@ import com.example.comicheroes.BuildConfig;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+// Retrofit class to build the calls to the web service and parse JSON objects to java objects
 public class RetrofitApiClientGenerator {
 
     private static Retrofit retrofit;

@@ -38,6 +38,7 @@ public class SplashFragment extends Fragment {
         initView();
     }
 
+    // We show an animation during 6 seconds before we come into the app
     private void initView() {
 
         final Handler handler = new Handler();

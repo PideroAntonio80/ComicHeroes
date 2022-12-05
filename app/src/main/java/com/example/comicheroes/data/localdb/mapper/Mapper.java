@@ -11,6 +11,7 @@ import java.util.List;
 
 public class Mapper {
 
+    // Function that maps from a HeroDetail object to a HeroDB object
     public HeroDB fromHeroDetailToHeroDB(HeroDetail heroDetail) {
 
         return new HeroDB(
@@ -42,6 +43,7 @@ public class Mapper {
         );
     }
 
+    // Function that maps from a HeroDB object to a HeroDetail object
     public HeroDetail fromHeroDBToHeroDetail(HeroDB heroDB) {
 
         List<String> heightList = new ArrayList<>();

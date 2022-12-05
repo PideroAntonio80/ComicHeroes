@@ -36,6 +36,7 @@ public class DetailFragment extends Fragment {
     private HeroDbRepository repo;
     private Mapper mapper;
 
+    // Constructor of an static object of this class
     public static DetailFragment newInstance(String idHero) {
         DetailFragment fragment = new DetailFragment();
         Bundle args = new Bundle();
@@ -77,6 +78,7 @@ public class DetailFragment extends Fragment {
         initComponents(myHeroDetailed);
     }
 
+    // Init my database
     public void dbController() {
         db = HeroDatabase.getInstance(this.requireContext().getApplicationContext());
         dao = db.heroDAO();
@@ -84,11 +86,13 @@ public class DetailFragment extends Fragment {
         mapper = new Mapper();
     }
 
+    // Obtaining my hero to show it in the UI
     private HeroDetail getHeroById(String idHero) {
         HeroDB heroDB = repo.findHeroById(idHero);
         return mapper.fromHeroDBToHeroDetail(heroDB);
     }
 
+    // Painting my hero in the UI
     private void initComponents(HeroDetail heroDetail) {
 
         Glide.with(this.requireContext()).load(heroDetail.getImage()).into(binding.heroDetailPhoto);

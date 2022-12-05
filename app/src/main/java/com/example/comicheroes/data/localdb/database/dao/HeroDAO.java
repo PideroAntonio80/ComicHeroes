@@ -10,6 +10,7 @@ import com.example.comicheroes.data.localdb.model.HeroDB;
 
 import java.util.List;
 
+// Creating the queries I'll use in my database
 @Dao
 public interface HeroDAO {
 

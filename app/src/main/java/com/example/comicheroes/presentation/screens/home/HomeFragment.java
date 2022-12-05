@@ -45,6 +45,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
     List<HeroDB> listFromDB;
     List<HeroDetail> myList;
 
+    // Constructor of an static object of this class
     public static HomeFragment newInstance() {
         return new HomeFragment();
     }
@@ -73,6 +74,8 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
 
         listFromDB = repo.getAllHeroes();
 
+        // If database is empty (the first time you use the app after installing it) we call the service to obtain data
+        // Otherwise if we already have data in our database, we show it (so we can operate offline)
         if (listFromDB != null && !listFromDB.isEmpty()) {
             myList = new ArrayList<>();
 
@@ -88,6 +91,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
         }
     }
 
+    // Init my database
     public void dbController() {
         db = HeroDatabase.getInstance(this.requireContext().getApplicationContext());
         dao = db.heroDAO();
@@ -95,6 +99,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
         mapper = new Mapper();
     }
 
+    // Init my adapter for my recycler list
     private void initComponents(List<HeroDetail> list) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getContext());
         binding.HeroRecyclerList.setLayoutManager(layoutManager);
@@ -111,6 +116,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
         binding.HeroRecyclerList.setAdapter(adapter);
     }
 
+    // Observing live data: When we receive an answer (a hero list in this case) from the web service we insert it in our database
     private void observeViewModel() {
         viewModel.getHeroesListResponseLiveData().observe(getViewLifecycleOwner(), heroDetails -> {
 
@@ -120,6 +126,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
                     repo.insertHero(mapper.fromHeroDetailToHeroDB(heroDetails.get(i)));
                 }
 
+                // After the insertion we read the data of our database to show it in our UI
                 listFromDB = repo.getAllHeroes();
                 myList = new ArrayList<>();
 
@@ -133,6 +140,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
         });
     }
 
+    // Functions and listeners for dynamic filtered searching
     private void initListener() {
         binding.searchViewHeroes.setOnQueryTextListener(this);
     }

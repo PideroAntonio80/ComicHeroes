@@ -8,6 +8,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--TOOLBAR-->
+
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/mainActivityToolbar"
         android:layout_width="@dimen/margin_padding_size_zero"
@@ -20,6 +22,8 @@
         app:titleCentered="true"
         app:titleTextColor="@color/white"
         tools:title="@string/toolbar_title" />
+
+    <!--FRAGMENTS CONTAINER-->
 
     <FrameLayout
         android:id="@+id/fragmentContainer"
